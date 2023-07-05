@@ -74,7 +74,7 @@ const App = () => {
         <div className="App">
             <header className="App-header">
                 <h1>Nick's Playback Extension</h1>
-                <p>Youtuber Name: {channelName == '' ? channelName : "N/A"}</p>
+                <p>Youtuber Name: {channelName != '' ? channelName : "N/A"}</p>
                 <p>Saved Youtuber Speed: {savedYoutuberSpeed != -1 ? savedYoutuberSpeed : 'N/A'}</p>
                 <p>Saved Global Speed: {savedGlobalSpeed != -1 ? savedGlobalSpeed : 'N/A'}</p>
                 <input

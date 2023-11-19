@@ -14,10 +14,13 @@ This Chrome extension allows you to set and save playback speed for specific You
 
 ## Instructions on How to Use
 You must first pin the extension:
+
 ![image](https://github.com/nicksweerts/ChromeVideoExtension/assets/80731633/420da6c4-ee73-4214-8572-1518da8323f3)
 
 Then, on any YouTube page with a video, you will be able to click on the icon in the top right corner of Chrome to bring up the Playback controller:
+
 ![image](https://github.com/nicksweerts/ChromeVideoExtension/assets/80731633/435223d8-0cb4-45ed-aa1a-8373343e4f1d)
+
 ![image](https://github.com/nicksweerts/ChromeVideoExtension/assets/80731633/b2095998-1a48-459c-aa43-eed1ce195d9f)
 
 In this controller, you will be able to see the current channel of the video playing and the current global default.

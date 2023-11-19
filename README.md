@@ -3,6 +3,7 @@
 This Chrome extension allows you to set and save playback speed for specific YouTube channels and global defaults. It allows you to set speeds between 0.1x and 16x. It also automatically speeds up any ads that are playing to 16x speed, which acts as a pseudo-adblock.
 
 ## Instructions on How to Run
+- Clone the repository or download the zip
 - run 'npm install' in bash while in the 'ChromeVideoExtension' directory
 - run 'npm run build' in bash while in the 'ChromeVideoExtension' directory
 - In your Chrome browser, go to chrome://extensions/

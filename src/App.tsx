@@ -9,6 +9,11 @@ const App = () => {
     const [shownInputSpeed, setShownInputSpeed] = useState<string>('1');
 
     useEffect(() => {
+        doSetup();
+    }, []);
+
+    // A function to set up all future values needed
+    const doSetup = () => {
         const queryInfo = { active: true, lastFocusedWindow: true };
 
         chrome.tabs && chrome.tabs.query(queryInfo, tabs => {
@@ -38,8 +43,11 @@ const App = () => {
                     });
             });
         });
-    }, []);
+    }
 
+    // A function to send a message to the content script to change the playback speed
+    // Acts as a builder function for our methods and reacts to the response
+    // The reaction sets the saved values to be consistent with the content script
     const sendPlaybackChangeRequest = (ourMessage: string) => {
         const message = {
             message: ourMessage,
@@ -59,11 +67,11 @@ const App = () => {
                 currentTabId,
                 message,
                 (response) => {
-                    if (ourMessage == "Change Youtuber Default" && response == "Success") {
+                    if (ourMessage === "Change Youtuber Default" && response === "Success") {
                         setSavedYoutuberSpeed(inputSpeed);
-                    } else if (ourMessage == "Change Global Default" && response == "Success") {
+                    } else if (ourMessage === "Change Global Default" && response === "Success") {
                         setSavedGlobalSpeed(inputSpeed);
-                    } else if (ourMessage == "Remove Youtuber Default" && response == "Success") {
+                    } else if (ourMessage === "Remove Youtuber Default" && response === "Success") {
                         setSavedYoutuberSpeed(-1);
                     }
                 });
@@ -74,15 +82,15 @@ const App = () => {
         <div className="App">
             <header className="App-header">
                 <h1>Nick's Playback Extension</h1>
-                <p>Youtuber Name: {channelName != '' ? channelName : "N/A"}</p>
-                <p>Saved Youtuber Speed: {savedYoutuberSpeed != -1 ? savedYoutuberSpeed : 'N/A'}</p>
-                <p>Saved Global Speed: {savedGlobalSpeed != -1 ? savedGlobalSpeed : 'N/A'}</p>
+                <p>Youtuber Name: {channelName !== '' ? channelName : "N/A"}</p>
+                <p>Saved Youtuber Speed: {savedYoutuberSpeed !== -1 ? savedYoutuberSpeed : 'N/A'}</p>
+                <p>Saved Global Speed: {savedGlobalSpeed !== -1 ? savedGlobalSpeed : 'N/A'}</p>
                 <input
                     type='number'
                     value={shownInputSpeed}
                     onChange={(e) => {
                         setShownInputSpeed(e.target.value);
-                        if (e.target.value == '') return;
+                        if (e.target.value === '') return;
                         const parsedNum: number = parseFloat(e.target.value)
                         if (parsedNum > 16) {
                             setShownInputSpeed('16');
@@ -100,7 +108,6 @@ const App = () => {
                 />
                 <button onClick={(e) => { sendPlaybackChangeRequest("Change Global Default") }}>Save Global Default</button>
                 <button onClick={(e) => { sendPlaybackChangeRequest("Change Youtuber Default") }}>Save Youtuber Default</button>
-                <button onClick={(e) => { sendPlaybackChangeRequest("Change Playback Speed") }}>Set Current Video Speed</button>
                 <button onClick={(e) => { sendPlaybackChangeRequest("Remove Youtuber Default") }}>Remove Saved Youtuber Default</button>
             </header>
         </div>

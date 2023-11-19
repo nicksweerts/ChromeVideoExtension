@@ -9,7 +9,7 @@ const changePlaybackSpeed = (speed: number) => {
         console.log("No videos found");
         return false;
     };
-    console.log("Changing playback speed to " + speed);
+
     videos[0].playbackRate = speed;
     return true;
 }
@@ -158,7 +158,6 @@ function doc_loaded() {
         chrome.storage.local.get('globalDefault').then((result) => {
             if (result['globalDefault']) {
                 globalDefault = result['globalDefault'];
-                console.log(globalDefault);
             }
             if (channelDefault === -1) {
                 changePlaybackSpeed(globalDefault)
@@ -172,7 +171,6 @@ function doc_loaded() {
 // Have timer run every second to check if the video has changed
 // If it has, then change the playback speed
 setInterval(() => {
-    console.log("Checking for video change");
     // Checking to see if an ad is playing on the video
     // If so, set the speed to be 16x
     const ad = document.getElementsByClassName("video-ads ytp-ad-module");

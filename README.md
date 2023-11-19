@@ -13,7 +13,10 @@ This Chrome extension allows you to set and save playback speed for specific You
 
 
 ## Instructions on How to Use
-You must first pin the extension:
+You must first pin the extension by first clicking on the puzzle piece in the top right corner of Chrome and then pinning the extension:
+
+![image](https://github.com/nicksweerts/ChromeVideoExtension/assets/80731633/1c4f3917-4fc8-4983-a90b-dabaf71deb23)
+
 
 ![image](https://github.com/nicksweerts/ChromeVideoExtension/assets/80731633/420da6c4-ee73-4214-8572-1518da8323f3)
 
